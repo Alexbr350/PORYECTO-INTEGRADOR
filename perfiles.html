@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¿Quién está viendo? · Proyecto Integrador</title>
+<link rel="stylesheet" href="css/base.css">
+</head>
+<body>
+
+<div class="profiles-wrap">
+  <h1 class="profiles-title">¿Quién está usando el sitio?</h1>
+
+  <div class="profiles-grid">
+    <button class="profile-card" id="perfilAlejandro">
+      <div class="profile-avatar">
+        <img src="assets/img/perfiles/alejandro.png" alt="Alejandro Bonilla Rivera">
+      </div>
+      <div class="profile-name">Alejandro Bonilla Rivera</div>
+    </button>
+
+    <button class="profile-card" id="perfilNuevo">
+      <div class="profile-avatar is-add">+</div>
+      <div class="profile-name">Agregar perfil</div>
+    </button>
+  </div>
+</div>
+
+<script>
+  document.getElementById('perfilAlejandro').addEventListener('click', () => {
+    window.location.href = 'mundos.html';
+  });
+  // El segundo perfil se configura más adelante.
+  document.getElementById('perfilNuevo').addEventListener('click', () => {
+    window.location.href = 'mundos.html';
+  });
+</script>
+
+</body>
+</html>

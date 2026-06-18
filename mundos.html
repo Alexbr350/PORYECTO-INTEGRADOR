@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proyecto Integrador · México en el Siglo XXI</title>
+<link rel="stylesheet" href="css/base.css">
+<style>
+  body {
+    background: #07080d;
+    min-height: 100vh;
+  }
+  .landing-hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 100px 24px 60px;
+    background:
+      radial-gradient(ellipse at 20% 10%, rgba(217,143,59,.10), transparent 45%),
+      radial-gradient(ellipse at 80% 0%, rgba(196,32,43,.10), transparent 45%),
+      radial-gradient(ellipse at 50% 90%, rgba(95,201,214,.10), transparent 45%),
+      #07080d;
+  }
+  .landing-eyebrow {
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #9a9aa3;
+    margin-bottom: 18px;
+  }
+  .landing-title {
+    font-size: clamp(32px, 6vw, 58px);
+    line-height: 1.15;
+    max-width: 880px;
+    margin: 0 0 18px;
+    font-weight: 800;
+  }
+  .landing-sub {
+    color: #b9b9c2;
+    max-width: 600px;
+    font-size: 15.5px;
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+  .landing-meta {
+    color: #74747d;
+    font-size: 13px;
+    margin-bottom: 56px;
+  }
+
+  .world-grid {
+    width: 100%;
+    max-width: 1180px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+    padding: 0 24px;
+  }
+  .world-card {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    aspect-ratio: 3/4;
+    background-size: cover;
+    background-position: center;
+    isolation: isolate;
+    transition: transform 320ms cubic-bezier(.22,.61,.36,1);
+  }
+  .world-card:hover { transform: translateY(-8px); }
+  .world-card::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,.05) 0%, rgba(0,0,0,.55) 65%, rgba(0,0,0,.92) 100%);
+    z-index: 1;
+  }
+  .world-card-content {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    z-index: 2;
+    padding: 20px 16px;
+  }
+  .world-tag {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: .8;
+    margin-bottom: 6px;
+  }
+  .world-name {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 6px;
+  }
+  .world-desc {
+    font-size: 12.5px;
+    color: #d6d6dc;
+    line-height: 1.4;
+    opacity: 0;
+    max-height: 0;
+    transition: opacity 240ms ease, max-height 240ms ease;
+  }
+  .world-card:hover .world-desc { opacity: 1; max-height: 60px; }
+
+  .w-alicia .world-name { font-family: 'AliceWonderland', cursive; color: #f3e9e3; }
+  .w-avengers .world-name { font-family: 'Avengeance', Impact, sans-serif; color: #fff; text-transform: uppercase; }
+  .w-monsters .world-name { font-family: 'MonsterAG', sans-serif; color: #eaf0f5; }
+  .w-starwars .world-name { font-family: 'StarJedi', sans-serif; color: #e0b15c; text-transform: uppercase; }
+
+  .w-alicia .world-tag { color: #d98f3b; }
+  .w-avengers .world-tag { color: #5fa8e2; }
+  .w-monsters .world-tag { color: #5fc9d6; }
+  .w-starwars .world-tag { color: #c5151b; }
+
+  @font-face { font-family: 'AliceWonderland'; src: url('assets/fonts/Alice_in_Wonderland_3.ttf'); }
+  @font-face { font-family: 'Avengeance'; src: url('assets/fonts/AVENGEANCE_HEROIC_AVENGER.ttf'); }
+  @font-face { font-family: 'MonsterAG'; src: url('assets/fonts/Monster_AG.ttf'); }
+  @font-face { font-family: 'StarJedi'; src: url('assets/fonts/Starjedi.ttf'); }
+
+  @media (max-width: 900px) {
+    .world-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .world-grid { grid-template-columns: 1fr; gap: 14px; }
+    .world-card { aspect-ratio: 16/9; }
+  }
+
+  .landing-footer {
+    margin-top: 70px;
+    text-align: center;
+    color: #5e5e66;
+    font-size: 12.5px;
+    padding: 0 24px 40px;
+  }
+</style>
+</head>
+<body>
+
+<nav class="gx-nav" style="background:transparent;">
+  <div class="gx-brand font-disney"><span class="dot"></span> Proyecto Integrador+</div>
+  <div class="gx-user">
+    <div class="gx-user-avatar"><img src="assets/img/perfiles/alejandro.png" alt="Alejandro"></div>
+    <span class="gx-user-name">Alejandro Bonilla Rivera</span>
+  </div>
+</nav>
+
+<div class="landing-hero">
+  <div class="landing-eyebrow">México en el Siglo XXI</div>
+  <h1 class="landing-title font-disney">Proyecto Integrador de Unidades</h1>
+  <p class="landing-sub">
+    El Mundo en el siglo XXI, AMANDA IMELDA JUAREZ OROPEZA
+  </p>
+  <div class="landing-meta">Elige un mundo para comenzar</div>
+
+  <div class="world-grid">
+    <a class="world-card w-alicia" href="alicia.html" style="background-image:url('assets/img/alicia/card1.jpg');">
+      <div class="world-card-content">
+        <div class="world-tag">Unidad 1</div>
+        <div class="world-name">Alicia</div>
+        <div class="world-desc">Nuevas tecnologías y nuevas ciencias en el siglo XXI.</div>
+      </div>
+    </a>
+
+    <a class="world-card w-avengers" href="avengers.html" style="background-image:url('assets/img/avengers/card2.jpg');">
+      <div class="world-card-content">
+        <div class="world-tag">Unidad 2</div>
+        <div class="world-name">Avengers</div>
+        <div class="world-desc">Desigualdad económica y social en el mundo.</div>
+      </div>
+    </a>
+
+    <a class="world-card w-monsters" href="monsters.html" style="background-image:url('assets/img/monsters/card1.jpg');">
+      <div class="world-card-content">
+        <div class="world-tag">Unidad 3</div>
+        <div class="world-name">Monsters Inc</div>
+        <div class="world-desc">Reconfiguración cultural en el mundo.</div>
+      </div>
+    </a>
+
+    <a class="world-card w-starwars" href="starwars.html" style="background-image:url('assets/img/starwars/hero1.jpg');">
+      <div class="world-card-content">
+        <div class="world-tag">Conclusión</div>
+        <div class="world-name">Star Wars</div>
+        <div class="world-desc">Resumen y conclusión general del proyecto.</div>
+      </div>
+    </a>
+  </div>
+
+  <div class="landing-footer">Licenciatura en Enseñanza y Aprendizaje de la Historia · ENSFA</div>
+</div>
+
+</body>
+</html>

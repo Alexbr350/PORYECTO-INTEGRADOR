@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proyecto Integrador · México en el Siglo XXI</title>
+<link rel="stylesheet" href="css/base.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    overflow: hidden;
+  }
+
+  .intro-wrap {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .intro-video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .intro-vignette {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.55) 100%);
+  }
+
+  .skip-btn {
+    position: absolute;
+    bottom: 28px;
+    right: 28px;
+    z-index: 5;
+    padding: 10px 22px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,.35);
+    background: rgba(20,20,24,.55);
+    color: #f1f1f3;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 13px;
+    letter-spacing: .5px;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+    transition: background 180ms ease, transform 180ms ease;
+  }
+  .skip-btn:hover {
+    background: rgba(255,255,255,.18);
+    transform: translateY(-1px);
+  }
+
+  .intro-fade {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 480ms ease;
+  }
+  .intro-fade.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .sound-btn {
+    position: absolute;
+    bottom: 28px;
+    left: 28px;
+    z-index: 5;
+    padding: 10px 20px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,.35);
+    background: rgba(20,20,24,.55);
+    color: #f1f1f3;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 13px;
+    letter-spacing: .5px;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+    transition: background 180ms ease, transform 180ms ease;
+    display: none;
+  }
+  .sound-btn.show { display: inline-flex; align-items: center; gap: 8px; }
+  .sound-btn:hover {
+    background: rgba(255,255,255,.18);
+    transform: translateY(-1px);
+  }
+
+  .tap-hint {
+    position: absolute;
+    bottom: 28px;
+    left: 28px;
+    z-index: 5;
+    color: rgba(255,255,255,.55);
+    font-size: 12px;
+    letter-spacing: .5px;
+  }
+  .tap-hint:not(.font-disney) {
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+</style>
+</head>
+<body>
+
+<div class="intro-wrap">
+  <video class="intro-video" id="introVideo" autoplay playsinline>
+    <source src="assets/video/intro.mp4" type="video/mp4">
+  </video>
+  <div class="intro-vignette"></div>
+  <div class="tap-hint font-disney" id="tapHint">Proyecto Integrador · México en el Siglo XXI</div>
+  <button class="sound-btn" id="soundBtn">🔇 Activar sonido</button>
+  <button class="skip-btn" id="skipBtn">Saltar intro ⏭</button>
+</div>
+
+<div class="intro-fade" id="introFade"></div>
+
+<script>
+  const video = document.getElementById('introVideo');
+  const skipBtn = document.getElementById('skipBtn');
+  const soundBtn = document.getElementById('soundBtn');
+  const tapHint = document.getElementById('tapHint');
+  const fade = document.getElementById('introFade');
+  const DESTINO = 'perfiles.html';
+  let yendo = false;
+
+  function irAMundos() {
+    if (yendo) return;
+    yendo = true;
+    fade.classList.add('active');
+    setTimeout(() => { window.location.href = DESTINO; }, 480);
+  }
+
+  video.addEventListener('ended', irAMundos);
+  skipBtn.addEventListener('click', irAMundos);
+
+  function activarSonido() {
+    video.muted = false;
+    video.play().catch(() => {});
+    soundBtn.classList.remove('show');
+    tapHint.style.display = '';
+  }
+  soundBtn.addEventListener('click', activarSonido);
+
+  // Intentamos reproducir CON sonido apenas se pueda.
+  video.addEventListener('canplay', () => {
+    video.play().catch(() => {
+      // El navegador bloqueó el autoplay con sonido: reintentamos en mute
+      // y mostramos el botón para que el usuario lo active manualmente.
+      video.muted = true;
+      video.play().catch(() => {});
+      soundBtn.classList.add('show');
+      tapHint.style.display = 'none';
+    });
+  });
+
+  // Si quedó en mute por el bloqueo, el primer click en cualquier parte
+  // de la pantalla también activa el sonido (gesto del usuario).
+  document.addEventListener('click', (e) => {
+    if (video.muted && e.target !== skipBtn) activarSonido();
+  }, { once: true });
+</script>
+
+</body>
+</html>
