@@ -1,0 +1,58 @@
+/* ============================================
+   AVENGERS — Unidad 2
+   Paleta: azul acero / rojo Capitán América / acentos plata
+   ============================================ */
+
+body.theme-avengers {
+  --bg: #060912;
+  --ink: #eef1f8;
+  --muted: #97a0b5;
+  --card-bg: #0f1422;
+  --accent: #c4202b;
+  --accent-2: #1f5fae;
+  background:
+    radial-gradient(ellipse at top, rgba(31,95,174,.30), transparent 60%),
+    var(--bg);
+}
+
+.theme-avengers .gx-brand {
+  font-family: 'Avengeance', Impact, sans-serif;
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+
+.theme-avengers .gx-title {
+  font-family: 'Avengeance', 'Arial Narrow', Impact, sans-serif;
+  font-weight: 800;
+  font-size: clamp(30px, 5.2vw, 54px);
+  line-height: 1.18;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  text-shadow: 0 4px 0 rgba(0,0,0,.4), 0 0 30px rgba(196,32,43,.35);
+}
+
+.theme-avengers .gx-eyebrow { color: var(--accent-2); }
+
+.theme-avengers .gx-btn.primary { background: var(--accent); color: #fff; }
+.theme-avengers .gx-btn.primary:hover { background: #e22834; }
+.theme-avengers .gx-row h2 { font-family: 'Arial Narrow', sans-serif; font-weight: 800; font-size: 22px; text-transform: uppercase; letter-spacing: .5px; }
+
+.theme-avengers .gx-card { border: 1px solid rgba(31,95,174,.25); }
+.theme-avengers .gx-card-overlay { font-family: 'Arial Narrow', sans-serif; font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: .3px; }
+
+.theme-avengers .gx-nav.scrolled { background: #060912; }
+
+.theme-avengers .gx-modal-body h3 { font-family: 'Arial Narrow', sans-serif; font-weight: 800; color: var(--accent-2); text-transform: uppercase; }
+
+/* Motivo visual: esquina tipo "escudo" en hover */
+.theme-avengers .gx-card::before {
+  content: '';
+  position: absolute; inset: 6px;
+  border: 1px solid rgba(238,241,248,0);
+  border-radius: 5px;
+  transition: border-color 220ms ease;
+  z-index: 4;
+  pointer-events: none;
+}
+.theme-avengers .gx-card:hover::before { border-color: rgba(196,32,43,.6); }

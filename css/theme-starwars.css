@@ -1,0 +1,60 @@
+/* ============================================
+   STAR WARS — LA VENGANZA DE LOS SITH — Conclusión
+   Paleta: negro espacial + rojo sith + dorado imperial
+   ============================================ */
+
+body.theme-starwars {
+  --bg: #05050a;
+  --ink: #f1efe8;
+  --muted: #9a9690;
+  --card-bg: #0e0d12;
+  --accent: #c5151b;
+  --accent-2: #e0b15c;
+  background:
+    radial-gradient(ellipse at top, rgba(197,21,27,.22), transparent 60%),
+    var(--bg);
+}
+
+.theme-starwars .gx-brand {
+  font-family: 'StarJedi', 'Arial Narrow', sans-serif;
+  font-size: 22px;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  letter-spacing: 1px;
+}
+
+.theme-starwars .gx-title {
+  font-family: 'Oswald', 'Arial Narrow', 'Helvetica Neue', sans-serif;
+  font-weight: 600;
+  font-size: clamp(32px, 6vw, 58px);
+  line-height: 1.25;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--accent-2);
+  text-shadow: 0 0 28px rgba(197,21,27,.45);
+}
+
+.theme-starwars .gx-eyebrow { color: var(--accent); letter-spacing: 4px; }
+
+.theme-starwars .gx-btn.primary { background: var(--accent); color: #fff; }
+.theme-starwars .gx-btn.primary:hover { background: #e02830; }
+.theme-starwars .gx-row h2 { font-family: 'Arial Narrow', sans-serif; font-weight: 800; font-size: 21px; text-transform: uppercase; color: var(--accent-2); letter-spacing: 1px; }
+
+.theme-starwars .gx-card { border: 1px solid rgba(197,21,27,.22); }
+.theme-starwars .gx-card-overlay { font-family: 'Arial Narrow', sans-serif; font-weight: 700; font-size: 13px; text-transform: uppercase; color: var(--accent-2); }
+
+.theme-starwars .gx-nav.scrolled { background: #05050a; }
+
+.theme-starwars .gx-modal-body h3 { font-family: 'Arial Narrow', sans-serif; font-weight: 800; color: var(--accent); text-transform: uppercase; }
+
+/* Motivo visual: borde tipo "sable" rojo en hover */
+.theme-starwars .gx-card::before {
+  content: '';
+  position: absolute; inset: 6px;
+  border: 1px solid rgba(241,239,232,0);
+  border-radius: 5px;
+  transition: border-color 220ms ease;
+  z-index: 4;
+  pointer-events: none;
+}
+.theme-starwars .gx-card:hover::before { border-color: rgba(197,21,27,.65); }

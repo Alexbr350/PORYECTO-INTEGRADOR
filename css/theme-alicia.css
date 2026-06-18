@@ -1,0 +1,122 @@
+/* ============================================
+   ALICIA EN EL PAÍS DE LAS MARAVILLAS — Unidad 1
+   Paleta: vino/magenta profundo, dorado óxido, verde musgo
+   ============================================ */
+
+body.theme-alicia {
+  --bg: #1a0f1c;
+  --ink: #f3e9e3;
+  --muted: #b7a2ad;
+  --card-bg: #241226;
+  --accent: #d98f3b;
+  --accent-2: #7e2a52;
+  background:
+    radial-gradient(ellipse at top, rgba(126,42,82,.35), transparent 60%),
+    var(--bg);
+}
+
+.theme-alicia .gx-brand,
+.theme-alicia .gx-title {
+  font-family: 'AliceWonderland', cursive;
+  letter-spacing: .5px;
+}
+
+.theme-alicia .gx-brand { font-size: 26px; }
+.theme-alicia .gx-title { font-size: clamp(38px, 7vw, 72px); text-shadow: 0 4px 24px rgba(0,0,0,.5); }
+
+.theme-alicia .gx-eyebrow { color: var(--accent); }
+
+.theme-alicia .gx-btn.primary { background: var(--accent); color: #1a0f1c; }
+.theme-alicia .gx-btn.primary:hover { background: #e8a050; }
+.theme-alicia .gx-row h2 { font-family: 'AliceWonderland', cursive; font-size: 26px; color: #f3e9e3; }
+
+.theme-alicia .gx-card { border: 1px solid rgba(217,143,59,.18); }
+.theme-alicia .gx-card-overlay { font-family: 'AliceWonderland', cursive; font-size: 16px; }
+
+.theme-alicia .gx-nav.scrolled { background: #1a0f1c; }
+
+.theme-alicia .gx-modal-body h3 { font-family: 'AliceWonderland', cursive; color: var(--accent); }
+
+/* Motivo visual: marco tipo "carta de la baraja" en hover */
+.theme-alicia .gx-card::before {
+  content: '';
+  position: absolute; inset: 6px;
+  border: 1px solid rgba(243,233,227,0);
+  border-radius: 5px;
+  transition: border-color 220ms ease;
+  z-index: 4;
+  pointer-events: none;
+}
+.theme-alicia .gx-card:hover::before { border-color: rgba(217,143,59,.55); }
+
+/* ============================================
+   Encabezados de tema (4 secciones grandes)
+   ============================================ */
+.gx-topic-head {
+  margin-bottom: 22px;
+  position: relative;
+}
+.theme-alicia .gx-topic-head h2 {
+  font-family: 'AliceWonderland', cursive;
+  font-size: 30px;
+  color: #f3e9e3;
+  margin: 0 0 6px;
+  display: inline-block;
+  position: relative;
+}
+.theme-alicia .gx-topic-sub {
+  margin: 0;
+  font-size: 14px;
+  color: #cdb8c4;
+  font-style: italic;
+  opacity: .85;
+  max-width: 640px;
+}
+
+/* Pequeño "naipe" decorativo flotando junto al título de cada tema */
+.theme-alicia .gx-topic-head::before {
+  content: '♥';
+  position: absolute;
+  left: -34px;
+  top: 2px;
+  font-size: 22px;
+  color: var(--accent-2);
+  opacity: .55;
+  animation: gx-card-float 3.2s ease-in-out infinite;
+}
+.theme-alicia #clima .gx-topic-head::before { content: '♣'; animation-delay: .4s; }
+.theme-alicia #salud .gx-topic-head::before { content: '♦'; animation-delay: .8s; }
+.theme-alicia #tecnologia .gx-topic-head::before { content: '♠'; animation-delay: 1.2s; }
+
+@keyframes gx-card-float {
+  0%, 100% { transform: translateY(0) rotate(-6deg); }
+  50% { transform: translateY(-6px) rotate(6deg); }
+}
+
+@media (max-width: 720px) {
+  .theme-alicia .gx-topic-head::before { display: none; }
+}
+
+/* La mecánica genérica de secciones temáticas, tarjetas de contexto,
+   mini-puertas y animación de entrada ahora vive en base.css
+   para que los 4 mundos del proyecto la compartan. */
+
+/* Reloj flotando de fondo en el hero, motivo "se nos hace tarde" */
+.theme-alicia .gx-hero::before {
+  content: '🕐';
+  position: absolute;
+  font-size: 38px;
+  opacity: .12;
+  top: 14%;
+  right: 8%;
+  z-index: 1;
+  animation: gx-clock-spin 9s linear infinite;
+  pointer-events: none;
+}
+@keyframes gx-clock-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@media (max-width: 720px) {
+  .theme-alicia .gx-hero::before { display: none; }
+}

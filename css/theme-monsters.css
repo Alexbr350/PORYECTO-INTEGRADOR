@@ -1,0 +1,56 @@
+/* ============================================
+   MONSTERS INC — Unidad 3
+   Paleta: azul-violeta de fábrica de sustos + acentos verde/morado de monstruo
+   ============================================ */
+
+body.theme-monsters {
+  --bg: #0a0e1c;
+  --ink: #eaf0f5;
+  --muted: #93a0b8;
+  --card-bg: #121a2e;
+  --accent: #5fc9d6;
+  --accent-2: #8a4fb0;
+  background:
+    radial-gradient(ellipse at top, rgba(138,79,176,.28), transparent 60%),
+    var(--bg);
+}
+
+.theme-monsters .gx-brand {
+  font-family: 'MonsterAG', 'Comic Sans MS', sans-serif;
+  font-size: 24px;
+  letter-spacing: .5px;
+}
+
+.theme-monsters .gx-title {
+  font-family: 'MonsterAG', 'Trebuchet MS', sans-serif;
+  font-weight: 800;
+  font-size: clamp(30px, 5.4vw, 56px);
+  line-height: 1.18;
+  letter-spacing: .3px;
+  text-shadow: 0 4px 22px rgba(95,201,214,.35);
+}
+
+.theme-monsters .gx-eyebrow { color: var(--accent); }
+
+.theme-monsters .gx-btn.primary { background: var(--accent); color: #0a0e1c; }
+.theme-monsters .gx-btn.primary:hover { background: #7ad8e2; }
+.theme-monsters .gx-row h2 { font-family: 'Trebuchet MS', sans-serif; font-weight: 800; font-size: 23px; color: var(--ink); }
+
+.theme-monsters .gx-card { border: 1px solid rgba(95,201,214,.2); }
+.theme-monsters .gx-card-overlay { font-family: 'Trebuchet MS', sans-serif; font-weight: 700; font-size: 14px; }
+
+.theme-monsters .gx-nav.scrolled { background: #0a0e1c; }
+
+.theme-monsters .gx-modal-body h3 { font-family: 'Trebuchet MS', sans-serif; font-weight: 800; color: var(--accent); }
+
+/* Motivo visual: "ojo" circular sutil en hover (Mike Wazowski) */
+.theme-monsters .gx-card::before {
+  content: '';
+  position: absolute; inset: 6px;
+  border: 1px solid rgba(234,240,245,0);
+  border-radius: 5px;
+  transition: border-color 220ms ease;
+  z-index: 4;
+  pointer-events: none;
+}
+.theme-monsters .gx-card:hover::before { border-color: rgba(138,79,176,.55); }
